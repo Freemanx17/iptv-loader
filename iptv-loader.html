@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPTV Loader</title>
+</head>
+<body>
+    <script>
+        // جلب ملف M3U ومعالجته
+        fetch('http://atg100.xyz/get.php?username=UL33K17&password=SYC4T9D&type=m3u_plus')
+            .then(response => response.text())
+            .then(data => {
+                const lines = data.split('\n');
+                const urls = lines.filter(line => line.startsWith('http'));
+                // حفظ الروابط في localStorage
+                localStorage.setItem('iptv_channels', JSON.stringify(urls));
+                alert('تم تحميل القنوات بنجاح!');
+            });
+    </script>
+</body>
+</html>
